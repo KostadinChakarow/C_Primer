@@ -12,26 +12,28 @@ passed as an argument.*/
 #define MAX 80
 
 
-char get_s(char *arr)
+static void get_s(char *arr, int n)
 {
 	char c;
 	int i = 0;
 
- 	while((c = getchar()) != '\n'){
+ 	while(i < n){
+ 		c = getchar();
  		arr[i] = c;
  		printf("%c\n", arr[i]);
  		i++;
  	}
  	printf("array = %s\n", arr);
- 	return arr;
+ 	
 }
 
 int main(){
 	char array1[MAX];
 	char *parray1;
 
+	printf("Enter word:\n");
 	parray1 = array1;
-	get_s(array1);
+	get_s(array1, 5);
 	printf("%s\n", array1);
 	
 return 0;
