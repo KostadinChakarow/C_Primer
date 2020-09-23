@@ -20,27 +20,18 @@ uses a loop to provide input values for feeding to the function.
 #define LENGHT 5
 #define LETTER 'a'
 
-static char get_s(char *input, char a)
+static char *get_s(char *input, char a)
 {
-	//char input[SIZE];
-	char *p;
-	_Bool char_found = 0;
 	int i = 0;
 
-	p = input;
-	//Read word until space ecounterred.
- 	while((input[i] = getchar()) != 'a'){
- 		i++;	
+	//Read word until new line.
+ 	while((*input = getchar()) != '\n'){
+ 		if(*input == 'a'){
+ 			return input; // return pointer if a encounered
+ 		}
+ 		input++;	
  	}
-
- 	if(input[i] == 'a'){
- 		//input = input + i;
- 		printf("in if\n");
- 		printf("%s\n", input);
- 			return input[i];
- 	}
- 	else
- 		return 0;	
+ 	return 0;	
 }
 	
 int main(){
