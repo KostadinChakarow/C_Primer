@@ -23,22 +23,24 @@ uses a loop to provide input values for feeding to the function.
 static char get_s(char *input, char a)
 {
 	//char input[SIZE];
-	
+	char *p;
+	_Bool char_found = 0;
 	int i = 0;
 
+	p = input;
 	//Read word until space ecounterred.
- 	while((input[i] = getchar()) != '\n'){
- 		if(input[i] == a){
- 			printf("Char found in at input[%d]\n", i);
- 			return (input + i);
- 		}
-
-
- 		i++;		
+ 	while((input[i] = getchar()) != 'a'){
+ 		i++;	
  	}
 
- 	
- 	return 0;
+ 	if(input[i] == 'a'){
+ 		//input = input + i;
+ 		printf("in if\n");
+ 		printf("%s\n", input);
+ 			return input[i];
+ 	}
+ 	else
+ 		return 0;	
 }
 	
 int main(){
