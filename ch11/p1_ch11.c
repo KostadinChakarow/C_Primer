@@ -9,32 +9,31 @@ passed as an argument.*/
 #include <stdio.h>
 #include <string.h> 
 #include <ctype.h>
+#define MAX 80
 
 
-char get_s(void)
+char get_s(char *arr)
 {
-	char input[80];
 	char c;
-	char *p;
 	int i = 0;
 
-	p = input;
-
  	while((c = getchar()) != '\n'){
- 		input[i] = c;
+ 		arr[i] = c;
+ 		printf("%c\n", arr[i]);
  		i++;
- 			if(c == ' ' || c == '\t'){
- 				printf("%s\n", p);
- 				//return input; // Segmentation errror
- 				break;
- 			}
- 			
  	}
+ 	printf("array = %s\n", arr);
+ 	return arr;
 }
 
 int main(){
-	get_s();
-	//printf("%s", get_s());// segmentation error???
+	char array1[MAX];
+	char *parray1;
+
+	parray1 = array1;
+	get_s(array1);
+	printf("%s\n", array1);
+	
 return 0;
  	
  }
