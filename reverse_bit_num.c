@@ -38,7 +38,7 @@ int main(){
 	printf("Enter number to reverse: \n");
 	while(scanf("%d", &num)){
 		reversed_num = reverseBit(num);
-		printf("the reverse of %d is %d\n", num, reversed_num)
+		printf("the reverse of %d is %d\n", num, reversed_num);
 		printf("Enter number to reverse: \n");
 	}
 }
