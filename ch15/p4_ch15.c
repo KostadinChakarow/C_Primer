@@ -39,12 +39,14 @@ void find_ones_at(unsigned int *binP, unsigned int bit_pos){
 	}
 	if(flag == 0){
 		printf(" has 0 on pos %d", bit_pos);
+		return 0;
 	}
+	
 	printf(" has 1 on pos %d", bit_pos);
 	printf("\n");
 	free(binary);
 
-	return 0;
+	return 1;
 }
 
 
@@ -53,16 +55,16 @@ void find_ones_at(unsigned int *binP, unsigned int bit_pos){
 /*********************************MAIN*******************************/
 int main(){
 	unsigned int *input;
-	
+	int position = 0;
 	input = (int*)malloc(sizeof(int) * 1);
 	if(input == NULL){
 		printf("Error");
 		return -1;
 	}
-	printf("Enter int number:\n");
-	while(scanf("%d", input)){
-		printf("Enter int number:\n");
-	    find_ones(input);
+	printf("Enter int number:\nEnter position:\n");
+	while(scanf("%d %d", input, &position)){
+	    find_ones_at(input, position);
+	    printf("Enter int number:\nEnter position:\n");
 		
 	}
 }
