@@ -13,12 +13,13 @@ in the argument. Test the function in a program*/
 /********************************************************************/
 
 /**********************************FUNCTIONS*************************/
-unsigned int *decimal_to_binary(unsigned char *binP){
+void find_ones(unsigned int *binP){
 	unsigned int *binary;
 	int i = 0;                  //varible to conrol the first for loop
 	int j = 0;					//variable to control the second for loop
+	int cnt = 0;
 
-	free(binary);
+	
 	binary = (int*)malloc(sizeof(int) * 1);
 	for(i = 0; i < INT_SIZE; i++){
 		if(*binP > 0 ){             //put the remainder in array if *binP > 0
@@ -28,32 +29,20 @@ unsigned int *decimal_to_binary(unsigned char *binP){
 		}
 		else                        //else put 0s
 			binary[i] = 0;
-		
+		if(binary[i] == 1){
+		    cnt++;
+		}
 	}
 	for(j = i - 1; j >= 0; j--){
 		printf("%d", binary[j]);	//print the array from last to first element
 	}
+	printf(" has %d ones in it", cnt);
 	printf("\n");
+	free(binary);
 
-	return binary;
+	return 0;
 }
-unsigned int find_ones(unsigned int n){
-	unsigned int *ptr;
-	int i = 0;
-	int cnt = 0;
 
-	free(ptr1);
-	ptr1 = (int*)malloc(sizeof(int) * 1);
-	ptr1 = decimal_to_binary(ptr1);
-	for(i = 0; i < INT_SIZE; i++){
-		if(ptr1[i] == 0 ){             //put the remainder in array if *binP > 0
-			cnt++;
-		}
-	}
-
-	return cnt;
-
-}
 
 /********************************************************************/
 
@@ -61,15 +50,15 @@ unsigned int find_ones(unsigned int n){
 int main(){
 	unsigned int *input;
 	
-	input = (char*)malloc(sizeof(int) * 1);
-	if(pbin1 == NULL){
+	input = (int*)malloc(sizeof(int) * 1);
+	if(input == NULL){
 		printf("Error");
 		return -1;
 	}
 	printf("Enter int number:\n");
 	while(scanf("%d", input)){
 		printf("Enter int number:\n");
-		find_ones(ptr1);
+	    find_ones(input);
 		
 	}
 }
