@@ -13,33 +13,69 @@
 /********************************************************************/
 
 /**********************************FUNCTIONS*************************/
-char reverseBit(char *binP){
-	char *output = binP;
+unsigned char decimal_to_binary(unsigned char input){
+	unsigned char binary[9];
+	int i = 0;                  //varible to conrol the first for loop
+	int j = 0;					//variable to control the second for loop
+
+	for(i = 0; i < 8; i++){
+		if(input > 0 ){             //put the remainder in array if *binP > 0
+			binary[i] = (input % 2);
+			input = input / 2;
+			
+		}
+		else                        //else put 0s
+			binary[i] = 0;
+		
+	}
+	for(j = i - 1; j >= 0; j--){
+		printf("%d", binary[j]);	//print the array from last to first element
+	}
+	printf("\n");
+	return 0;
+}
+char reverseBit(unsigned char num_to_rev){
+	unsigned char input = num_to_rev;
+	_Bool flag_bit0 = 0;
 	int i = 0;
+	unsigned char comp_num = 128;
 	
-	for(i = 0; i < CHAR_SIZE; i++){
-		output = binP >> 1;
-		if((binP & 1) == input ) //checks if the value of bit 0 is 1 
-		{
-			output |= COMP_MASK_2; //toggle bit 7 if we have 1 on bit 0 before shift
-		} 
+	for(i = 0; i < 8; i++){
+		if(input & comp_num){
+			if(input & 1) //checks if the value of bit 0 is 1 
+				flag_bit0 = 1; //toggle bit 7 if we have 1 on bit 0 before shift
+			else 
+				flag_bit0 = 0;
+			input = input >> 1;
+			if(flag_bit0 == 1)
+				input = input | 128;
+			comp_num = comp_num >> 1;
+		}
+		comp_num = comp_num >> 1;
 		
 	}
 	
-	return output;
+	return input;
 }
 /********************************************************************/
 
 /*********************************MAIN*******************************/
 int main(){
-	char num = 0;
-	char reversed_num = 0;
+	unsigned char num = 0;
+	unsigned char reversed_num = 0;
+	unsigned char num_test = 0;
 	
-	printf("Enter number to reverse: \n");
-	while(scanf("%c", &num)){
-		reversed_num = reverseBit(num);
-		printf("the reverse of %d is %d\n", num, reversed_num);
+	while(1){
+
 		printf("Enter number to reverse: \n");
+		scanf("%hhu", &num);
+		printf("number before reversing\n");
+		decimal_to_binary(num);
+		printf("number after reverce \n");
+		reversed_num = reverseBit(num);
+		decimal_to_binary(reversed_num);		
 	}
+
+	return 0;
 }
 /********************************************************************/
